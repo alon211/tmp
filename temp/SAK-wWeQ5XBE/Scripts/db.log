@@ -1,0 +1,221 @@
+16:05:01.920951 call         8 def test_db():
+16:05:01.926901 line         9     try:
+16:05:01.930883 line        10         cnxn=pyodbc.connect('DRIVER={SQL Server\};SERVER=172.30.125.221;DATABASE=SMT_Manager;UID=sa;PWD=0123456789',timeout=5)
+    Starting var:.. encoding = 'utf-16le'
+    16:05:01.936897 call        71 def search_function(encoding):
+    16:05:01.942861 line        74     entry = _cache.get(encoding, _unknown)
+    New var:....... entry = '--unknown--'
+    16:05:01.950830 line        75     if entry is not _unknown:
+    16:05:01.953822 line        85     norm_encoding = normalize_encoding(encoding)
+    New var:....... norm_encoding = 'utf_16le'
+    16:05:01.963795 line        86     aliased_encoding = _aliases.get(norm_encoding) or \
+    New var:....... aliased_encoding = 'utf_16_le'
+    16:05:01.971774 line        88     if aliased_encoding is not None:
+    16:05:01.977758 line        89         modnames = [aliased_encoding,
+    16:05:01.981747 line        90                     norm_encoding]
+    New var:....... modnames = ['utf_16_le', 'utf_16le']
+    16:05:01.987731 line        93     for modname in modnames:
+    New var:....... modname = 'utf_16_le'
+    16:05:01.997703 line        94         if not modname or '.' in modname:
+    16:05:02.001694 line        96         try:
+    16:05:02.005681 line        99             mod = __import__('encodings.' + modname, fromlist=_import_tail,
+    16:05:02.011667 line       100                              level=0)
+    New var:....... mod = <module 'encodings.utf_16_le' from 'C:\\Users\\M...nvs\\SAK-wWeQ5XBE\\lib\\encodings\\utf_16_le.py'>
+    16:05:02.020642 line       106             break
+    16:05:02.029619 line       110     try:
+    16:05:02.033609 line       111         getregentry = mod.getregentry
+    New var:....... getregentry = <function getregentry at 0x000002162F6488C8>
+    16:05:02.046574 line       116     if mod is None:
+    16:05:02.050564 line       122     entry = getregentry()
+    Modified var:.. entry = <codecs.CodecInfo object for encoding utf-16-le at 0x2162f5edb88>
+    16:05:02.060537 line       123     if not isinstance(entry, codecs.CodecInfo):
+    16:05:02.064526 line       139     _cache[encoding] = entry
+    16:05:02.068514 line       143     try:
+    16:05:02.072503 line       144         codecaliases = mod.getaliases()
+    16:05:02.078489 exception  144         codecaliases = mod.getaliases()
+    AttributeError: module 'encodings.utf_16_le' has no attribute 'getaliases'
+    16:05:02.086466 line       145     except AttributeError:
+    16:05:02.090458 line       146         pass
+    16:05:02.096470 line       153     return entry
+    16:05:02.100429 return     153     return entry
+    Return value:.. <codecs.CodecInfo object for encoding utf-16-le at 0x2162f5edb88>
+    Starting var:.. input = <memory at 0x000002162F47EA08>
+    Starting var:.. errors = 'strict'
+    16:06:10.669290 call        15 def decode(input, errors='strict'):
+    16:06:10.673279 line        16     return codecs.utf_16_le_decode(input, errors, True)
+    16:06:10.677269 return      16     return codecs.utf_16_le_decode(input, errors, True)
+    Return value:.. ('[Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server 不存在或访问被拒绝', 130)
+    Starting var:.. input = <memory at 0x000002162F47EA08>
+    Starting var:.. errors = 'strict'
+    16:06:10.693225 call        15 def decode(input, errors='strict'):
+    16:06:10.696218 line        16     return codecs.utf_16_le_decode(input, errors, True)
+    16:06:10.701204 return      16     return codecs.utf_16_le_decode(input, errors, True)
+    Return value:.. ('[Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()).', 144)
+16:06:10.709183 exception   10         cnxn=pyodbc.connect('DRIVER={SQL Server\};SERVER=172.30.125.221;DATABASE=SMT_Manager;UID=sa;PWD=0123456789',timeout=5)
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Serve...erConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (53)')
+16:06:10.717162 line        16     except Exception as e:
+New var:....... e = OperationalError('08001', '[08001] [Microsoft][O...iver][DBNETLIB]ConnectionOpen (Connect()). (53)')
+16:06:10.725140 line        18         pass
+16:06:10.729130 return      18         pass
+Return value:.. None
+16:08:02.840004 call         8 def test_db():
+16:08:02.844005 line         9     try:
+16:08:02.847999 line        10         cnxn=pyodbc.connect('DRIVER={SQL Server\};SERVER=172.30.125.221;DATABASE=SMT_Manager;UID=sa;PWD=0123456789',timeout=5)
+    Starting var:.. encoding = 'utf-16le'
+    16:08:02.857951 call        71 def search_function(encoding):
+    16:08:02.861947 line        74     entry = _cache.get(encoding, _unknown)
+    New var:....... entry = '--unknown--'
+    16:08:02.871918 line        75     if entry is not _unknown:
+    16:08:02.875911 line        85     norm_encoding = normalize_encoding(encoding)
+    New var:....... norm_encoding = 'utf_16le'
+    16:08:02.885900 line        86     aliased_encoding = _aliases.get(norm_encoding) or \
+    New var:....... aliased_encoding = 'utf_16_le'
+    16:08:02.894858 line        88     if aliased_encoding is not None:
+    16:08:02.898858 line        89         modnames = [aliased_encoding,
+    16:08:02.903845 line        90                     norm_encoding]
+    New var:....... modnames = ['utf_16_le', 'utf_16le']
+    16:08:02.911805 line        93     for modname in modnames:
+    New var:....... modname = 'utf_16_le'
+    16:08:02.922788 line        94         if not modname or '.' in modname:
+    16:08:02.926777 line        96         try:
+    16:08:02.931727 line        99             mod = __import__('encodings.' + modname, fromlist=_import_tail,
+    16:08:02.937711 line       100                              level=0)
+    New var:....... mod = <module 'encodings.utf_16_le' from 'C:\\Users\\M...nvs\\SAK-wWeQ5XBE\\lib\\encodings\\utf_16_le.py'>
+    16:08:02.948682 line       106             break
+    16:08:02.955665 line       110     try:
+    16:08:02.960649 line       111         getregentry = mod.getregentry
+    New var:....... getregentry = <function getregentry at 0x000002638CFB88C8>
+    16:08:02.973617 line       116     if mod is None:
+    16:08:02.977629 line       122     entry = getregentry()
+    Modified var:.. entry = <codecs.CodecInfo object for encoding utf-16-le at 0x2638cf3db88>
+    16:08:02.986624 line       123     if not isinstance(entry, codecs.CodecInfo):
+    16:08:02.991604 line       139     _cache[encoding] = entry
+    16:08:02.995601 line       143     try:
+    16:08:02.999602 line       144         codecaliases = mod.getaliases()
+    16:08:03.005572 exception  144         codecaliases = mod.getaliases()
+    AttributeError: module 'encodings.utf_16_le' has no attribute 'getaliases'
+    16:08:03.013536 line       145     except AttributeError:
+    16:08:03.019494 line       146         pass
+    16:08:03.023482 line       153     return entry
+    16:08:03.027505 return     153     return entry
+    Return value:.. <codecs.CodecInfo object for encoding utf-16-le at 0x2638cf3db88>
+    Starting var:.. input = <memory at 0x000002638CDCEA08>
+    Starting var:.. errors = 'strict'
+    16:09:11.597438 call        15 def decode(input, errors='strict'):
+    16:09:11.601462 line        16     return codecs.utf_16_le_decode(input, errors, True)
+    16:09:11.606442 return      16     return codecs.utf_16_le_decode(input, errors, True)
+    Return value:.. ('[Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server 不存在或访问被拒绝', 130)
+    Starting var:.. input = <memory at 0x000002638CDCEA08>
+    Starting var:.. errors = 'strict'
+    16:09:11.622407 call        15 def decode(input, errors='strict'):
+    16:09:11.627416 line        16     return codecs.utf_16_le_decode(input, errors, True)
+    16:09:11.631384 return      16     return codecs.utf_16_le_decode(input, errors, True)
+    Return value:.. ('[Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()).', 144)
+16:09:11.639325 exception   10         cnxn=pyodbc.connect('DRIVER={SQL Server\};SERVER=172.30.125.221;DATABASE=SMT_Manager;UID=sa;PWD=0123456789',timeout=5)
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Serve...erConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (53)')
+16:09:11.647345 line        16     except Exception as e:
+New var:....... e = OperationalError('08001', '[08001] [Microsoft][O...iver][DBNETLIB]ConnectionOpen (Connect()). (53)')
+16:09:11.656325 line        18         pass
+16:09:11.660304 return      18         pass
+Return value:.. None
+16:27:53.206285 call         8 def test_db():
+16:27:53.211271 line         9     try:
+16:27:53.217269 line        10         cnxn=pyodbc.connect('DRIVER={SQL Server\};SERVER=172.30.125.221;DATABASE=SMT_Manager;UID=sa;PWD=0123456789',timeout=5)
+    Starting var:.. encoding = 'utf-16le'
+    16:27:53.226231 call        71 def search_function(encoding):
+    16:27:53.231217 line        74     entry = _cache.get(encoding, _unknown)
+    New var:....... entry = '--unknown--'
+    16:27:53.242189 line        75     if entry is not _unknown:
+    16:27:53.246177 line        85     norm_encoding = normalize_encoding(encoding)
+    New var:....... norm_encoding = 'utf_16le'
+    16:27:53.256153 line        86     aliased_encoding = _aliases.get(norm_encoding) or \
+    New var:....... aliased_encoding = 'utf_16_le'
+    16:27:53.265128 line        88     if aliased_encoding is not None:
+    16:27:53.273106 line        89         modnames = [aliased_encoding,
+    16:27:53.278094 line        90                     norm_encoding]
+    New var:....... modnames = ['utf_16_le', 'utf_16le']
+    16:27:53.292056 line        93     for modname in modnames:
+    New var:....... modname = 'utf_16_le'
+    16:27:53.307017 line        94         if not modname or '.' in modname:
+    16:27:53.313001 line        96         try:
+    16:27:53.320019 line        99             mod = __import__('encodings.' + modname, fromlist=_import_tail,
+    16:27:53.324000 line       100                              level=0)
+    New var:....... mod = <module 'encodings.utf_16_le' from 'C:\\Users\\M...nvs\\SAK-wWeQ5XBE\\lib\\encodings\\utf_16_le.py'>
+    16:27:53.336944 line       106             break
+    16:27:53.340955 line       110     try:
+    16:27:53.344947 line       111         getregentry = mod.getregentry
+    New var:....... getregentry = <function getregentry at 0x000002780A8F88C8>
+    16:27:53.355918 line       116     if mod is None:
+    16:27:53.360914 line       122     entry = getregentry()
+    Modified var:.. entry = <codecs.CodecInfo object for encoding utf-16-le at 0x2780a87dac8>
+    16:27:53.370876 line       123     if not isinstance(entry, codecs.CodecInfo):
+    16:27:53.374870 line       139     _cache[encoding] = entry
+    16:27:53.379821 line       143     try:
+    16:27:53.383840 line       144         codecaliases = mod.getaliases()
+    16:27:53.387833 exception  144         codecaliases = mod.getaliases()
+    AttributeError: module 'encodings.utf_16_le' has no attribute 'getaliases'
+    16:27:53.396776 line       145     except AttributeError:
+    16:27:53.400797 line       146         pass
+    16:27:53.404785 line       153     return entry
+    16:27:53.408776 return     153     return entry
+    Return value:.. <codecs.CodecInfo object for encoding utf-16-le at 0x2780a87dac8>
+    Starting var:.. input = <memory at 0x000002780A70EA08>
+    Starting var:.. errors = 'strict'
+    16:29:01.971984 call        15 def decode(input, errors='strict'):
+    16:29:01.976971 line        16     return codecs.utf_16_le_decode(input, errors, True)
+    16:29:01.980962 return      16     return codecs.utf_16_le_decode(input, errors, True)
+    Return value:.. ('[Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server 不存在或访问被拒绝', 130)
+    Starting var:.. input = <memory at 0x000002780A70EA08>
+    Starting var:.. errors = 'strict'
+    16:29:01.997908 call        15 def decode(input, errors='strict'):
+    16:29:02.001895 line        16     return codecs.utf_16_le_decode(input, errors, True)
+    16:29:02.006851 return      16     return codecs.utf_16_le_decode(input, errors, True)
+    Return value:.. ('[Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()).', 144)
+16:29:02.015861 exception   10         cnxn=pyodbc.connect('DRIVER={SQL Server\};SERVER=172.30.125.221;DATABASE=SMT_Manager;UID=sa;PWD=0123456789',timeout=5)
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Serve...erConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (53)')
+16:29:02.024803 line        16     except Exception as e:
+New var:....... e = OperationalError('08001', '[08001] [Microsoft][O...iver][DBNETLIB]ConnectionOpen (Connect()). (53)')
+16:29:02.032813 line        18         pass
+16:29:02.036808 return      18         pass
+Return value:.. None
+16:30:00.408282 call         9 def test_db():
+16:30:00.413268 line        10     try:
+16:30:00.418225 line        11         cnxn=pyodbc.connect('DRIVER={SQL Server\};SERVER=172.30.125.221;DATABASE=SMT_Manager;UID=sa;PWD=0123456789',timeout=5)
+    Starting var:.. encoding = 'utf-16le'
+    16:30:00.429227 call        71 def search_function(encoding):
+    16:30:00.433211 line        74     entry = _cache.get(encoding, _unknown)
+    New var:....... entry = '--unknown--'
+    16:30:00.443188 line        75     if entry is not _unknown:
+    16:30:00.448144 line        85     norm_encoding = normalize_encoding(encoding)
+    New var:....... norm_encoding = 'utf_16le'
+    16:30:00.458158 line        86     aliased_encoding = _aliases.get(norm_encoding) or \
+    New var:....... aliased_encoding = 'utf_16_le'
+    16:30:00.467124 line        88     if aliased_encoding is not None:
+    16:30:00.474098 line        89         modnames = [aliased_encoding,
+    16:30:00.479064 line        90                     norm_encoding]
+    New var:....... modnames = ['utf_16_le', 'utf_16le']
+    16:30:00.492030 line        93     for modname in modnames:
+    New var:....... modname = 'utf_16_le'
+    16:30:00.503004 line        94         if not modname or '.' in modname:
+    16:30:00.509980 line        96         try:
+    16:30:00.514967 line        99             mod = __import__('encodings.' + modname, fromlist=_import_tail,
+    16:30:00.518988 line       100                              level=0)
+    New var:....... mod = <module 'encodings.utf_16_le' from 'C:\\Users\\M...nvs\\SAK-wWeQ5XBE\\lib\\encodings\\utf_16_le.py'>
+    16:30:00.530954 line       106             break
+    16:30:00.534946 line       110     try:
+    16:30:00.542893 line       111         getregentry = mod.getregentry
+    New var:....... getregentry = <function getregentry at 0x00000270273088C8>
+    16:30:00.550909 line       116     if mod is None:
+    16:30:00.556862 line       122     entry = getregentry()
+    Modified var:.. entry = <codecs.CodecInfo object for encoding utf-16-le at 0x2702728dac8>
+    16:30:00.566828 line       123     if not isinstance(entry, codecs.CodecInfo):
+    16:30:00.570848 line       139     _cache[encoding] = entry
+    16:30:00.577843 line       143     try:
+    16:30:00.581818 line       144         codecaliases = mod.getaliases()
+    16:30:00.585807 exception  144         codecaliases = mod.getaliases()
+    AttributeError: module 'encodings.utf_16_le' has no attribute 'getaliases'
+    16:30:00.595783 line       145     except AttributeError:
+    16:30:00.600736 line       146         pass
+    16:30:00.605769 line       153     return entry
+    16:30:00.609743 return     153     return entry
+    Return value:.. <codecs.CodecInfo object for encoding utf-16-le at 0x2702728dac8>

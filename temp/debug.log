@@ -1,0 +1,690 @@
+Starting var:.. self = <gernerate_recorder.recoder_process object at 0x000002269599ADA0>
+20:47:29.040187 call       113     def create_new_file(self):
+20:47:29.041149 line       115         file = f'{datetime.now().strftime("%Y-%m-%d %H %M %S")}.xls'
+New var:....... file = '2019-08-10 20 47 29.xls'
+20:47:29.041149 line       116         self.init_data()
+    Starting var:.. self = <gernerate_recorder.recoder_process object at 0x000002269599ADA0>
+    20:47:29.041149 call        54     def init_data(self):
+    20:47:29.042231 line        55         self._cur_endrow = self._endrow
+    20:47:29.042231 line        56         self._cur_startrow = self._startrow
+    20:47:29.042231 line        57         self._cur_startcolumn = self._startcolumn
+    20:47:29.044142 line        58         self._cur_endcolumn = self._endcolumn
+    20:47:29.045140 line        59         self._current_data = copy.deepcopy(self._init_data)
+    20:47:29.045140 return      59         self._current_data = copy.deepcopy(self._init_data)
+    Return value:.. None
+20:47:29.046137 line       117         if self._ex_path is not None:
+20:47:29.046137 line       118             shutil.copyfile(self._template_path,os.path.join(self._ex_path,file))
+    Starting var:.. path = 'C:/Users/MEACH/project/temp'
+    Starting var:.. paths = ('2019-08-10 20 47 29.xls',)
+    20:47:29.046137 call        75 def join(path, *paths):
+    20:47:29.047136 line        76     path = os.fspath(path)
+    20:47:29.047136 line        77     if isinstance(path, bytes):
+    20:47:29.047757 line        82         sep = '\\'
+    New var:....... sep = '\\'
+    20:47:29.047757 line        83         seps = '\\/'
+    New var:....... seps = '\\/'
+    20:47:29.048132 line        84         colon = ':'
+    New var:....... colon = ':'
+    20:47:29.048132 line        85     try:
+    20:47:29.048132 line        86         if not paths:
+    20:47:29.048853 line        88         result_drive, result_path = splitdrive(path)
+    New var:....... result_drive = 'C:'
+    New var:....... result_path = '/Users/MEACH/project/temp'
+    20:47:29.049130 line        89         for p in map(os.fspath, paths):
+    New var:....... p = '2019-08-10 20 47 29.xls'
+    20:47:29.049130 line        90             p_drive, p_path = splitdrive(p)
+    New var:....... p_drive = ''
+    New var:....... p_path = '2019-08-10 20 47 29.xls'
+    20:47:29.049130 line        91             if p_path and p_path[0] in seps:
+    20:47:29.049961 line        97             elif p_drive and p_drive != result_drive:
+    20:47:29.050127 line       106             if result_path and result_path[-1] not in seps:
+    20:47:29.050127 line       107                 result_path = result_path + sep
+    Modified var:.. result_path = '/Users/MEACH/project/temp\\'
+    20:47:29.050127 line       108             result_path = result_path + p_path
+    Modified var:.. result_path = '/Users/MEACH/project/temp\\2019-08-10 20 47 29.xls'
+    20:47:29.050127 line        89         for p in map(os.fspath, paths):
+    20:47:29.051124 line       110         if (result_path and result_path[0] not in seps and
+    20:47:29.051124 line       113         return result_drive + result_path
+    20:47:29.051124 return     113         return result_drive + result_path
+    Return value:.. 'C:/Users/MEACH/project/temp\\2019-08-10 20 47 29.xls'
+    Starting var:.. src = 'C:/Users/MEACH/project/SAK/template.xls'
+    Starting var:.. dst = 'C:/Users/MEACH/project/temp\\2019-08-10 20 47 29.xls'
+    Starting var:.. follow_symlinks = True
+    20:47:29.052121 call        96 def copyfile(src, dst, *, follow_symlinks=True):
+    20:47:29.052121 line       103     if _samefile(src, dst):
+    20:47:29.052121 line       106     for fn in [src, dst]:
+    New var:....... fn = 'C:/Users/MEACH/project/SAK/template.xls'
+    20:47:29.052121 line       107         try:
+    20:47:29.053150 line       108             st = os.stat(fn)
+    New var:....... st = os.stat_result(st_mode=33206, st_ino=84442493015...987806, st_mtime=1449552874, st_ctime=1564987806)
+    20:47:29.053150 line       114             if stat.S_ISFIFO(st.st_mode):
+    20:47:29.053150 line       106     for fn in [src, dst]:
+    Modified var:.. fn = 'C:/Users/MEACH/project/temp\\2019-08-10 20 47 29.xls'
+    20:47:29.053150 line       107         try:
+    20:47:29.054193 line       108             st = os.stat(fn)
+    20:47:29.054193 exception  108             st = os.stat(fn)
+    FileNotFoundError: [WinError 2] 系统找不到指定的文件。: 'C:/Users/MEACH/project/temp\\2019-08-10 20 47 29.xls'
+    20:47:29.054193 line       109         except OSError:
+    20:47:29.054193 line       111             pass
+    20:47:29.054193 line       106     for fn in [src, dst]:
+    20:47:29.055114 line       117     if not follow_symlinks and os.path.islink(src):
+    20:47:29.055329 line       120         with open(src, 'rb') as fsrc:
+    New var:....... fsrc = <_io.BufferedReader name='C:/Users/MEACH/project/SAK/template.xls'>
+    20:47:29.055329 line       121             with open(dst, 'wb') as fdst:
+    New var:....... fdst = <_io.BufferedWriter name='C:/Users/MEACH/project/temp\\2019-08-10 20 47 29.xls'>
+    20:47:29.056111 line       122                 copyfileobj(fsrc, fdst)
+    20:47:29.056111 line       123     return dst
+    20:47:29.056111 return     123     return dst
+    Return value:.. 'C:/Users/MEACH/project/temp\\2019-08-10 20 47 29.xls'
+20:47:29.056864 line       121         self.get_excel_obj(os.path.join(self._ex_path,file))
+    Starting var:.. path = 'C:/Users/MEACH/project/temp'
+    Starting var:.. paths = ('2019-08-10 20 47 29.xls',)
+    20:47:29.057108 call        75 def join(path, *paths):
+    20:47:29.057108 line        76     path = os.fspath(path)
+    20:47:29.057108 line        77     if isinstance(path, bytes):
+    20:47:29.057108 line        82         sep = '\\'
+    New var:....... sep = '\\'
+    20:47:29.058104 line        83         seps = '\\/'
+    New var:....... seps = '\\/'
+    20:47:29.058104 line        84         colon = ':'
+    New var:....... colon = ':'
+    20:47:29.058104 line        85     try:
+    20:47:29.058104 line        86         if not paths:
+    20:47:29.059023 line        88         result_drive, result_path = splitdrive(path)
+    New var:....... result_drive = 'C:'
+    New var:....... result_path = '/Users/MEACH/project/temp'
+    20:47:29.059103 line        89         for p in map(os.fspath, paths):
+    New var:....... p = '2019-08-10 20 47 29.xls'
+    20:47:29.059103 line        90             p_drive, p_path = splitdrive(p)
+    New var:....... p_drive = ''
+    New var:....... p_path = '2019-08-10 20 47 29.xls'
+    20:47:29.060106 line        91             if p_path and p_path[0] in seps:
+    20:47:29.060106 line        97             elif p_drive and p_drive != result_drive:
+    20:47:29.060106 line       106             if result_path and result_path[-1] not in seps:
+    20:47:29.060106 line       107                 result_path = result_path + sep
+    Modified var:.. result_path = '/Users/MEACH/project/temp\\'
+    20:47:29.060106 line       108             result_path = result_path + p_path
+    Modified var:.. result_path = '/Users/MEACH/project/temp\\2019-08-10 20 47 29.xls'
+    20:47:29.061098 line        89         for p in map(os.fspath, paths):
+    20:47:29.061253 line       110         if (result_path and result_path[0] not in seps and
+    20:47:29.061253 line       113         return result_drive + result_path
+    20:47:29.061253 return     113         return result_drive + result_path
+    Return value:.. 'C:/Users/MEACH/project/temp\\2019-08-10 20 47 29.xls'
+    Starting var:.. self = <gernerate_recorder.recoder_process object at 0x000002269599ADA0>
+    Starting var:.. path = 'C:/Users/MEACH/project/temp\\2019-08-10 20 47 29.xls'
+    20:47:29.062095 call        93     def get_excel_obj(self,path):
+    20:47:29.062273 line       100         try:
+    20:47:29.062273 line       101             if self._wb is not None:
+    20:47:29.062273 line       103             self._wb = self._excel.Workbooks.Open(path)
+        Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Application instance at 0x2364778399616>
+        Starting var:.. attr = 'Workbooks'
+        20:47:29.063113 call       470 	def __getattr__(self, attr):
+        20:47:29.063476 line       471 		args=self._prop_map_get_.get(attr)
+        New var:....... args = (572, 2, (9, 0), (), 'Workbooks', '{000208DB-0000-0000-C000-000000000046}')
+        20:47:29.063476 line       472 		if args is None:
+        20:47:29.063476 line       474 		return self._ApplyTypes_(*args)
+        20:47:29.065087 return     474 		return self._ApplyTypes_(*args)
+        Return value:.. <win32com.gen_py.Microsoft Excel 15.0 Object Library.Workbooks instance at 0x2364852218456>
+        Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Workbooks instance at 0x2364852218456>
+        Starting var:.. Filename = 'C:/Users/MEACH/project/temp\\2019-08-10 20 47 29.xls'
+        Starting var:.. UpdateLinks = <PyOleEmpty object at 0x0000022682499B80>
+        Starting var:.. ReadOnly = <PyOleEmpty object at 0x0000022682499B80>
+        Starting var:.. Format = <PyOleEmpty object at 0x0000022682499B80>
+        Starting var:.. Password = <PyOleEmpty object at 0x0000022682499B80>
+        Starting var:.. WriteResPassword = <PyOleEmpty object at 0x0000022682499B80>
+        Starting var:.. IgnoreReadOnlyRecommended = <PyOleEmpty object at 0x0000022682499B80>
+        Starting var:.. Origin = <PyOleEmpty object at 0x0000022682499B80>
+        Starting var:.. Delimiter = <PyOleEmpty object at 0x0000022682499B80>
+        Starting var:.. Editable = <PyOleEmpty object at 0x0000022682499B80>
+        Starting var:.. Notify = <PyOleEmpty object at 0x0000022682499B80>
+        Starting var:.. Converter = <PyOleEmpty object at 0x0000022682499B80>
+        Starting var:.. AddToMru = <PyOleEmpty object at 0x0000022682499B80>
+        Starting var:.. Local = <PyOleEmpty object at 0x0000022682499B80>
+        Starting var:.. CorruptLoad = <PyOleEmpty object at 0x0000022682499B80>
+        20:47:29.068079 call        71 	def Open(self, Filename=defaultNamedNotOptArg, UpdateLinks=defaultNamedOptArg, ReadOnly=defaultNamedOptArg, Format=defaultNamedOptArg
+        20:47:29.068952 line        75 		ret = self._oleobj_.InvokeTypes(1923, LCID, 1, (13, 0), ((8, 1), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17)),Filename
+        20:47:29.069075 line        76 			, UpdateLinks, ReadOnly, Format, Password, WriteResPassword
+        20:47:29.069075 line        77 			, IgnoreReadOnlyRecommended, Origin, Delimiter, Editable, Notify
+        20:47:29.069075 line        78 			, Converter, AddToMru, Local, CorruptLoad)
+        New var:....... ret = <PyIDispatch at 0x00000226975AF530 with obj at 0x00000226975B8448>
+        20:47:29.629577 line        79 		if ret is not None:
+        20:47:29.630024 line        81 			try:
+        20:47:29.630024 line        82 				ret = ret.QueryInterface(pythoncom.IID_IDispatch)
+        Modified var:.. ret = <PyIDispatch at 0x00000226975AF740 with obj at 0x00000226975B8448>
+        20:47:29.630574 line        85 			ret = Dispatch(ret, 'Open', '{00020819-0000-0000-C000-000000000046}')
+        Modified var:.. ret = <win32com.gen_py.None.Workbook>
+        20:47:29.633566 line        86 		return ret
+        20:47:29.633566 return      86 		return ret
+        Return value:.. <win32com.gen_py.None.Workbook>
+    20:47:29.639320 line       104             self._excel.Visible = False
+        Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Application instance at 0x2364778399616>
+        Starting var:.. attr = 'Visible'
+        Starting var:.. value = False
+        20:47:29.639551 call       476 	def __setattr__(self, attr, value):
+        20:47:29.640547 line       477 		if attr in self.__dict__: self.__dict__[attr] = value; return
+        20:47:29.640547 line       478 		try:
+        20:47:29.640547 line       479 			args, defArgs=self._prop_map_put_[attr]
+        New var:....... args = (558, 0, 4, 0)
+        New var:....... defArgs = ()
+        20:47:29.640547 line       482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+        20:47:29.641699 return     482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+        Return value:.. None
+    20:47:29.642541 line       105             self._ws=self._wb.Worksheets('记录表')
+        Starting var:.. self = <win32com.gen_py.None.Workbook>
+        Starting var:.. attr = 'Worksheets'
+        20:47:29.642541 call       511 	def __getattr__(self, attr):
+        20:47:29.643540 line       512 		d=self.__dict__["_dispobj_"]
+        New var:....... d = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Workbook instance at 0x2364852915504>
+        20:47:29.643540 line       513 		if d is not None: return getattr(d, attr)
+        20:47:29.646532 return     513 		if d is not None: return getattr(d, attr)
+        Return value:.. <win32com.gen_py.Microsoft Excel 15.0 Object Library.Sheets instance at 0x2364852915672>
+        Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Sheets instance at 0x2364852915672>
+        Starting var:.. Index = '记录表'
+        20:47:29.647528 call       119 	def __call__(self, Index=defaultNamedNotOptArg):
+        20:47:29.647528 line       120 		ret = self._oleobj_.InvokeTypes(0, LCID, 2, (9, 0), ((12, 1),),Index
+        New var:....... ret = <PyIDispatch at 0x00000226975AF620 with obj at 0x00000226975B8058>
+        20:47:29.648527 line       122 		if ret is not None:
+        20:47:29.649524 line       123 			ret = Dispatch(ret, '__call__', None)
+        Modified var:.. ret = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Worksheet instance at 0x2364778400344>
+        20:47:29.654510 line       124 		return ret
+        20:47:29.654510 return     124 		return ret
+        Return value:.. <win32com.gen_py.Microsoft Excel 15.0 Object Library._Worksheet instance at 0x2364778400344>
+    20:47:29.655509 line       106             self._template_data=self._ws.Range('A1:G44').Value
+        Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Worksheet instance at 0x2364778400344>
+        Starting var:.. Cell1 = 'A1:G44'
+        Starting var:.. Cell2 = <PyOleEmpty object at 0x0000022682499B80>
+        20:47:29.656505 call       237 	def Range(self, Cell1=defaultNamedNotOptArg, Cell2=defaultNamedOptArg):
+        20:47:29.657315 line       238 		ret = self._oleobj_.InvokeTypes(197, LCID, 2, (9, 0), ((12, 1), (12, 17)),Cell1
+        20:47:29.657502 line       239 			, Cell2)
+        New var:....... ret = <PyIDispatch at 0x00000226975AF680 with obj at 0x00000226975B7FE8>
+        20:47:29.657502 line       240 		if ret is not None:
+        20:47:29.658500 line       241 			ret = Dispatch(ret, 'Range', '{00020846-0000-0000-C000-000000000046}')
+        Modified var:.. ret = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2364733772352>
+        20:47:29.660526 line       242 		return ret
+        20:47:29.661545 return     242 		return ret
+        Return value:.. <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2364733772352>
+        Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2364733772352>
+        Starting var:.. attr = 'Value'
+        20:47:29.662489 call       470 	def __getattr__(self, attr):
+        20:47:29.662610 line       471 		args=self._prop_map_get_.get(attr)
+        New var:....... args = (6, 2, (12, 0), ((12, 17),), 'Value', None)
+        20:47:29.662610 line       472 		if args is None:
+        20:47:29.663487 line       474 		return self._ApplyTypes_(*args)
+        20:47:29.664482 return     474 		return self._ApplyTypes_(*args)
+        Return value:.. (('任务单号：', None, None, None, None, None, None), ...one), (None, None, None, None, None, None, None))
+    20:47:29.665594 line       107             self._excel.CutCopyMode = False
+        Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Application instance at 0x2364778399616>
+        Starting var:.. attr = 'CutCopyMode'
+        Starting var:.. value = False
+        20:47:29.666479 call       476 	def __setattr__(self, attr, value):
+        20:47:29.667121 line       477 		if attr in self.__dict__: self.__dict__[attr] = value; return
+        20:47:29.667121 line       478 		try:
+        20:47:29.667475 line       479 			args, defArgs=self._prop_map_put_[attr]
+        New var:....... args = (330, 0, 4, 0)
+        New var:....... defArgs = ()
+        20:47:29.667475 line       482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+        20:47:29.668725 return     482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+        Return value:.. None
+    20:47:29.668725 return     107             self._excel.CutCopyMode = False
+    Return value:.. None
+20:47:29.669469 return     121         self.get_excel_obj(os.path.join(self._ex_path,file))
+Return value:.. None
+Starting var:.. self = <gernerate_recorder.recoder_process object at 0x000002269599ADA0>
+Starting var:.. data = [['产品名称:1型监控屏', None, None, '序列号:312190316051707...'京东方', '500000310410002', '/', None, None, None]]
+20:47:29.669791 call       136     def write_recordersheet(self,data):
+20:47:29.669791 line       142         try:
+20:47:29.670466 line       144             r=f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}'
+New var:....... r = 'A2:G9'
+20:47:29.670912 line       145             self._ws.Range(r).Value=data
+    Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Worksheet instance at 0x2364778400344>
+    Starting var:.. Cell1 = 'A2:G9'
+    Starting var:.. Cell2 = <PyOleEmpty object at 0x0000022682499B80>
+    20:47:29.671464 call       237 	def Range(self, Cell1=defaultNamedNotOptArg, Cell2=defaultNamedOptArg):
+    20:47:29.671464 line       238 		ret = self._oleobj_.InvokeTypes(197, LCID, 2, (9, 0), ((12, 1), (12, 17)),Cell1
+    20:47:29.671464 line       239 			, Cell2)
+    New var:....... ret = <PyIDispatch at 0x00000226975AFAA0 with obj at 0x00000226975B7DB8>
+    20:47:29.672461 line       240 		if ret is not None:
+    20:47:29.672461 line       241 			ret = Dispatch(ret, 'Range', '{00020846-0000-0000-C000-000000000046}')
+    Modified var:.. ret = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2364733896912>
+    20:47:29.672461 line       242 		return ret
+    20:47:29.672461 return     242 		return ret
+    Return value:.. <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2364733896912>
+    Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2364733896912>
+    Starting var:.. attr = 'Value'
+    Starting var:.. value = [['产品名称:1型监控屏', None, None, '序列号:312190316051707...'京东方', '500000310410002', '/', None, None, None]]
+    20:47:29.673458 call       476 	def __setattr__(self, attr, value):
+    20:47:29.673458 line       477 		if attr in self.__dict__: self.__dict__[attr] = value; return
+    20:47:29.674455 line       478 		try:
+    20:47:29.674455 line       479 			args, defArgs=self._prop_map_put_[attr]
+    New var:....... args = (6, 0, 4, 0)
+    New var:....... defArgs = ()
+    20:47:29.675030 line       482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+    20:47:29.677493 return     482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+    Return value:.. None
+20:47:29.705374 line       146             if self._cur_startrow>=29:
+20:47:29.705374 line       161                 self._cur_startrow+=9
+20:47:29.705374 line       162                 self._cur_endrow +=9
+20:47:29.706501 line       163             print(f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}')
+20:47:29.706501 return     163             print(f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}')
+Return value:.. None
+Starting var:.. self = <gernerate_recorder.recoder_process object at 0x000002269599ADA0>
+Starting var:.. data = [['产品名称:1型监控屏', None, None, '序列号:312190316051707...'京东方', '500000310410002', '/', None, None, None]]
+20:47:29.707369 call       136     def write_recordersheet(self,data):
+20:47:29.707369 line       142         try:
+20:47:29.707369 line       144             r=f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}'
+New var:....... r = 'A11:G18'
+20:47:29.707925 line       145             self._ws.Range(r).Value=data
+    Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Worksheet instance at 0x2364778400344>
+    Starting var:.. Cell1 = 'A11:G18'
+    Starting var:.. Cell2 = <PyOleEmpty object at 0x0000022682499B80>
+    20:47:29.708366 call       237 	def Range(self, Cell1=defaultNamedNotOptArg, Cell2=defaultNamedOptArg):
+    20:47:29.708366 line       238 		ret = self._oleobj_.InvokeTypes(197, LCID, 2, (9, 0), ((12, 1), (12, 17)),Cell1
+    20:47:29.709043 line       239 			, Cell2)
+    New var:....... ret = <PyIDispatch at 0x00000226975AF8F0 with obj at 0x00000226975B84B8>
+    20:47:29.709365 line       240 		if ret is not None:
+    20:47:29.709365 line       241 			ret = Dispatch(ret, 'Range', '{00020846-0000-0000-C000-000000000046}')
+    Modified var:.. ret = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2364733772352>
+    20:47:29.710421 line       242 		return ret
+    20:47:29.710421 return     242 		return ret
+    Return value:.. <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2364733772352>
+    Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2364733772352>
+    Starting var:.. attr = 'Value'
+    Starting var:.. value = [['产品名称:1型监控屏', None, None, '序列号:312190316051707...'京东方', '500000310410002', '/', None, None, None]]
+    20:47:29.711490 call       476 	def __setattr__(self, attr, value):
+    20:47:29.711490 line       477 		if attr in self.__dict__: self.__dict__[attr] = value; return
+    20:47:29.711490 line       478 		try:
+    20:47:29.712486 line       479 			args, defArgs=self._prop_map_put_[attr]
+    New var:....... args = (6, 0, 4, 0)
+    New var:....... defArgs = ()
+    20:47:29.712486 line       482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+    20:47:29.715347 return     482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+    Return value:.. None
+20:47:29.746263 line       146             if self._cur_startrow>=29:
+20:47:29.746263 line       161                 self._cur_startrow+=9
+20:47:29.746263 line       162                 self._cur_endrow +=9
+20:47:29.747261 line       163             print(f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}')
+20:47:29.747447 return     163             print(f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}')
+Return value:.. None
+Starting var:.. self = <gernerate_recorder.recoder_process object at 0x000002269599ADA0>
+Starting var:.. data = [['产品名称:1型监控屏', None, None, '序列号:312190316051707...'京东方', '500000310410002', '/', None, None, None]]
+20:47:29.747447 call       136     def write_recordersheet(self,data):
+20:47:29.748259 line       142         try:
+20:47:29.748648 line       144             r=f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}'
+New var:....... r = 'A20:G27'
+20:47:29.748648 line       145             self._ws.Range(r).Value=data
+    Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Worksheet instance at 0x2364778400344>
+    Starting var:.. Cell1 = 'A20:G27'
+    Starting var:.. Cell2 = <PyOleEmpty object at 0x0000022682499B80>
+    20:47:29.749759 call       237 	def Range(self, Cell1=defaultNamedNotOptArg, Cell2=defaultNamedOptArg):
+    20:47:29.749759 line       238 		ret = self._oleobj_.InvokeTypes(197, LCID, 2, (9, 0), ((12, 1), (12, 17)),Cell1
+    20:47:29.749759 line       239 			, Cell2)
+    New var:....... ret = <PyIDispatch at 0x00000226975AFAD0 with obj at 0x00000226975B8288>
+    20:47:29.750253 line       240 		if ret is not None:
+    20:47:29.751250 line       241 			ret = Dispatch(ret, 'Range', '{00020846-0000-0000-C000-000000000046}')
+    Modified var:.. ret = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2364733772184>
+    20:47:29.751250 line       242 		return ret
+    20:47:29.751250 return     242 		return ret
+    Return value:.. <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2364733772184>
+    Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2364733772184>
+    Starting var:.. attr = 'Value'
+    Starting var:.. value = [['产品名称:1型监控屏', None, None, '序列号:312190316051707...'京东方', '500000310410002', '/', None, None, None]]
+    20:47:29.752318 call       476 	def __setattr__(self, attr, value):
+    20:47:29.753342 line       477 		if attr in self.__dict__: self.__dict__[attr] = value; return
+    20:47:29.753342 line       478 		try:
+    20:47:29.753342 line       479 			args, defArgs=self._prop_map_put_[attr]
+    New var:....... args = (6, 0, 4, 0)
+    New var:....... defArgs = ()
+    20:47:29.754445 line       482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+    20:47:29.756753 return     482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+    Return value:.. None
+20:47:29.787299 line       146             if self._cur_startrow>=29:
+20:47:29.788303 line       161                 self._cur_startrow+=9
+20:47:29.788303 line       162                 self._cur_endrow +=9
+20:47:29.788303 line       163             print(f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}')
+20:47:29.788303 return     163             print(f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}')
+Return value:.. None
+Starting var:.. self = <gernerate_recorder.recoder_process object at 0x000002653EE926D8>
+20:50:43.518170 call       113     def create_new_file(self):
+20:50:43.519097 line       115         file = f'{datetime.now().strftime("%Y-%m-%d %H %M %S")}.xls'
+New var:....... file = '2019-08-10 20 50 43.xls'
+20:50:43.519097 line       116         self.init_data()
+    Starting var:.. self = <gernerate_recorder.recoder_process object at 0x000002653EE926D8>
+    20:50:43.520157 call        54     def init_data(self):
+    20:50:43.520157 line        55         self._cur_endrow = self._endrow
+    20:50:43.520157 line        56         self._cur_startrow = self._startrow
+    20:50:43.520157 line        57         self._cur_startcolumn = self._startcolumn
+    20:50:43.520157 line        58         self._cur_endcolumn = self._endcolumn
+    20:50:43.521092 line        59         self._current_data = copy.deepcopy(self._init_data)
+    20:50:43.522183 return      59         self._current_data = copy.deepcopy(self._init_data)
+    Return value:.. None
+20:50:43.522183 line       117         if self._ex_path is not None:
+20:50:43.522183 line       118             shutil.copyfile(self._template_path,os.path.join(self._ex_path,file))
+    Starting var:.. path = 'C:/Users/MEACH/project/temp'
+    Starting var:.. paths = ('2019-08-10 20 50 43.xls',)
+    20:50:43.523087 call        75 def join(path, *paths):
+    20:50:43.523087 line        76     path = os.fspath(path)
+    20:50:43.523087 line        77     if isinstance(path, bytes):
+    20:50:43.524085 line        82         sep = '\\'
+    New var:....... sep = '\\'
+    20:50:43.524456 line        83         seps = '\\/'
+    New var:....... seps = '\\/'
+    20:50:43.524456 line        84         colon = ':'
+    New var:....... colon = ':'
+    20:50:43.525081 line        85     try:
+    20:50:43.525081 line        86         if not paths:
+    20:50:43.525081 line        88         result_drive, result_path = splitdrive(path)
+    New var:....... result_drive = 'C:'
+    New var:....... result_path = '/Users/MEACH/project/temp'
+    20:50:43.526078 line        89         for p in map(os.fspath, paths):
+    New var:....... p = '2019-08-10 20 50 43.xls'
+    20:50:43.526078 line        90             p_drive, p_path = splitdrive(p)
+    New var:....... p_drive = ''
+    New var:....... p_path = '2019-08-10 20 50 43.xls'
+    20:50:43.526078 line        91             if p_path and p_path[0] in seps:
+    20:50:43.527075 line        97             elif p_drive and p_drive != result_drive:
+    20:50:43.527075 line       106             if result_path and result_path[-1] not in seps:
+    20:50:43.527075 line       107                 result_path = result_path + sep
+    Modified var:.. result_path = '/Users/MEACH/project/temp\\'
+    20:50:43.527075 line       108             result_path = result_path + p_path
+    Modified var:.. result_path = '/Users/MEACH/project/temp\\2019-08-10 20 50 43.xls'
+    20:50:43.528072 line        89         for p in map(os.fspath, paths):
+    20:50:43.528072 line       110         if (result_path and result_path[0] not in seps and
+    20:50:43.528072 line       113         return result_drive + result_path
+    20:50:43.528072 return     113         return result_drive + result_path
+    Return value:.. 'C:/Users/MEACH/project/temp\\2019-08-10 20 50 43.xls'
+    Starting var:.. src = 'C:/Users/MEACH/project/temp/template.xls'
+    Starting var:.. dst = 'C:/Users/MEACH/project/temp\\2019-08-10 20 50 43.xls'
+    Starting var:.. follow_symlinks = True
+    20:50:43.529070 call        96 def copyfile(src, dst, *, follow_symlinks=True):
+    20:50:43.529070 line       103     if _samefile(src, dst):
+    20:50:43.530067 line       106     for fn in [src, dst]:
+    New var:....... fn = 'C:/Users/MEACH/project/temp/template.xls'
+    20:50:43.530067 line       107         try:
+    20:50:43.530067 line       108             st = os.stat(fn)
+    New var:....... st = os.stat_result(st_mode=33206, st_ino=11258999068...334797, st_mtime=1449552874, st_ctime=1565334797)
+    20:50:43.530067 line       114             if stat.S_ISFIFO(st.st_mode):
+    20:50:43.531064 line       106     for fn in [src, dst]:
+    Modified var:.. fn = 'C:/Users/MEACH/project/temp\\2019-08-10 20 50 43.xls'
+    20:50:43.531064 line       107         try:
+    20:50:43.531064 line       108             st = os.stat(fn)
+    20:50:43.531064 exception  108             st = os.stat(fn)
+    FileNotFoundError: [WinError 2] 系统找不到指定的文件。: 'C:/Users/MEACH/project/temp\\2019-08-10 20 50 43.xls'
+    20:50:43.532062 line       109         except OSError:
+    20:50:43.532062 line       111             pass
+    20:50:43.532062 line       106     for fn in [src, dst]:
+    20:50:43.532062 line       117     if not follow_symlinks and os.path.islink(src):
+    20:50:43.532062 line       120         with open(src, 'rb') as fsrc:
+    New var:....... fsrc = <_io.BufferedReader name='C:/Users/MEACH/project/temp/template.xls'>
+    20:50:43.533059 line       121             with open(dst, 'wb') as fdst:
+    New var:....... fdst = <_io.BufferedWriter name='C:/Users/MEACH/project/temp\\2019-08-10 20 50 43.xls'>
+    20:50:43.533059 line       122                 copyfileobj(fsrc, fdst)
+    20:50:43.536379 line       123     return dst
+    20:50:43.536379 return     123     return dst
+    Return value:.. 'C:/Users/MEACH/project/temp\\2019-08-10 20 50 43.xls'
+20:50:43.537049 line       121         self.get_excel_obj(os.path.join(self._ex_path,file))
+    Starting var:.. path = 'C:/Users/MEACH/project/temp'
+    Starting var:.. paths = ('2019-08-10 20 50 43.xls',)
+    20:50:43.537049 call        75 def join(path, *paths):
+    20:50:43.537049 line        76     path = os.fspath(path)
+    20:50:43.537049 line        77     if isinstance(path, bytes):
+    20:50:43.537049 line        82         sep = '\\'
+    New var:....... sep = '\\'
+    20:50:43.538046 line        83         seps = '\\/'
+    New var:....... seps = '\\/'
+    20:50:43.538046 line        84         colon = ':'
+    New var:....... colon = ':'
+    20:50:43.538046 line        85     try:
+    20:50:43.538046 line        86         if not paths:
+    20:50:43.538046 line        88         result_drive, result_path = splitdrive(path)
+    New var:....... result_drive = 'C:'
+    New var:....... result_path = '/Users/MEACH/project/temp'
+    20:50:43.539131 line        89         for p in map(os.fspath, paths):
+    New var:....... p = '2019-08-10 20 50 43.xls'
+    20:50:43.539131 line        90             p_drive, p_path = splitdrive(p)
+    New var:....... p_drive = ''
+    New var:....... p_path = '2019-08-10 20 50 43.xls'
+    20:50:43.540041 line        91             if p_path and p_path[0] in seps:
+    20:50:43.540041 line        97             elif p_drive and p_drive != result_drive:
+    20:50:43.540041 line       106             if result_path and result_path[-1] not in seps:
+    20:50:43.540041 line       107                 result_path = result_path + sep
+    Modified var:.. result_path = '/Users/MEACH/project/temp\\'
+    20:50:43.541131 line       108             result_path = result_path + p_path
+    Modified var:.. result_path = '/Users/MEACH/project/temp\\2019-08-10 20 50 43.xls'
+    20:50:43.541131 line        89         for p in map(os.fspath, paths):
+    20:50:43.541131 line       110         if (result_path and result_path[0] not in seps and
+    20:50:43.542035 line       113         return result_drive + result_path
+    20:50:43.542035 return     113         return result_drive + result_path
+    Return value:.. 'C:/Users/MEACH/project/temp\\2019-08-10 20 50 43.xls'
+    Starting var:.. self = <gernerate_recorder.recoder_process object at 0x000002653EE926D8>
+    Starting var:.. path = 'C:/Users/MEACH/project/temp\\2019-08-10 20 50 43.xls'
+    20:50:43.542035 call        93     def get_excel_obj(self,path):
+    20:50:43.542035 line       100         try:
+    20:50:43.543089 line       101             if self._wb is not None:
+    20:50:43.543089 line       103             self._wb = self._excel.Workbooks.Open(path)
+        Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Application instance at 0x2633869786752>
+        Starting var:.. attr = 'Workbooks'
+        20:50:43.543089 call       470 	def __getattr__(self, attr):
+        20:50:43.544030 line       471 		args=self._prop_map_get_.get(attr)
+        New var:....... args = (572, 2, (9, 0), (), 'Workbooks', '{000208DB-0000-0000-C000-000000000046}')
+        20:50:43.544030 line       472 		if args is None:
+        20:50:43.544030 line       474 		return self._ApplyTypes_(*args)
+        20:50:43.546062 return     474 		return self._ApplyTypes_(*args)
+        Return value:.. <win32com.gen_py.Microsoft Excel 15.0 Object Library.Workbooks instance at 0x2633870174920>
+        Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Workbooks instance at 0x2633870174920>
+        Starting var:.. Filename = 'C:/Users/MEACH/project/temp\\2019-08-10 20 50 43.xls'
+        Starting var:.. UpdateLinks = <PyOleEmpty object at 0x000002652728A820>
+        Starting var:.. ReadOnly = <PyOleEmpty object at 0x000002652728A820>
+        Starting var:.. Format = <PyOleEmpty object at 0x000002652728A820>
+        Starting var:.. Password = <PyOleEmpty object at 0x000002652728A820>
+        Starting var:.. WriteResPassword = <PyOleEmpty object at 0x000002652728A820>
+        Starting var:.. IgnoreReadOnlyRecommended = <PyOleEmpty object at 0x000002652728A820>
+        Starting var:.. Origin = <PyOleEmpty object at 0x000002652728A820>
+        Starting var:.. Delimiter = <PyOleEmpty object at 0x000002652728A820>
+        Starting var:.. Editable = <PyOleEmpty object at 0x000002652728A820>
+        Starting var:.. Notify = <PyOleEmpty object at 0x000002652728A820>
+        Starting var:.. Converter = <PyOleEmpty object at 0x000002652728A820>
+        Starting var:.. AddToMru = <PyOleEmpty object at 0x000002652728A820>
+        Starting var:.. Local = <PyOleEmpty object at 0x000002652728A820>
+        Starting var:.. CorruptLoad = <PyOleEmpty object at 0x000002652728A820>
+        20:50:43.549017 call        71 	def Open(self, Filename=defaultNamedNotOptArg, UpdateLinks=defaultNamedOptArg, ReadOnly=defaultNamedOptArg, Format=defaultNamedOptArg
+        20:50:43.550014 line        75 		ret = self._oleobj_.InvokeTypes(1923, LCID, 1, (13, 0), ((8, 1), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17), (12, 17)),Filename
+        20:50:43.550014 line        76 			, UpdateLinks, ReadOnly, Format, Password, WriteResPassword
+        20:50:43.550014 line        77 			, IgnoreReadOnlyRecommended, Origin, Delimiter, Editable, Notify
+        20:50:43.550014 line        78 			, Converter, AddToMru, Local, CorruptLoad)
+        New var:....... ret = <PyIDispatch at 0x000002653A04C320 with obj at 0x0000026539FDB3C8>
+        20:50:44.079630 line        79 		if ret is not None:
+        20:50:44.080732 line        81 			try:
+        20:50:44.080732 line        82 				ret = ret.QueryInterface(pythoncom.IID_IDispatch)
+        Modified var:.. ret = <PyIDispatch at 0x000002653A04C1A0 with obj at 0x0000026539FDB3C8>
+        20:50:44.080732 line        85 			ret = Dispatch(ret, 'Open', '{00020819-0000-0000-C000-000000000046}')
+        Modified var:.. ret = <win32com.gen_py.None.Workbook>
+        20:50:44.084666 line        86 		return ret
+        20:50:44.084666 return      86 		return ret
+        Return value:.. <win32com.gen_py.None.Workbook>
+    20:50:44.090570 line       104             self._excel.Visible = False
+        Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Application instance at 0x2633869786752>
+        Starting var:.. attr = 'Visible'
+        Starting var:.. value = False
+        20:50:44.091568 call       476 	def __setattr__(self, attr, value):
+        20:50:44.091568 line       477 		if attr in self.__dict__: self.__dict__[attr] = value; return
+        20:50:44.091568 line       478 		try:
+        20:50:44.092595 line       479 			args, defArgs=self._prop_map_put_[attr]
+        New var:....... args = (558, 0, 4, 0)
+        New var:....... defArgs = ()
+        20:50:44.092595 line       482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+        20:50:44.094559 return     482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+        Return value:.. None
+    20:50:44.094559 line       105             self._ws=self._wb.Worksheets('记录表')
+        Starting var:.. self = <win32com.gen_py.None.Workbook>
+        Starting var:.. attr = 'Worksheets'
+        20:50:44.095559 call       511 	def __getattr__(self, attr):
+        20:50:44.096006 line       512 		d=self.__dict__["_dispobj_"]
+        New var:....... d = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Workbook instance at 0x2633870851488>
+        20:50:44.096554 line       513 		if d is not None: return getattr(d, attr)
+        20:50:44.098548 return     513 		if d is not None: return getattr(d, attr)
+        Return value:.. <win32com.gen_py.Microsoft Excel 15.0 Object Library.Sheets instance at 0x2633870851656>
+        Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Sheets instance at 0x2633870851656>
+        Starting var:.. Index = '记录表'
+        20:50:44.099545 call       119 	def __call__(self, Index=defaultNamedNotOptArg):
+        20:50:44.099545 line       120 		ret = self._oleobj_.InvokeTypes(0, LCID, 2, (9, 0), ((12, 1),),Index
+        New var:....... ret = <PyIDispatch at 0x000002653A04C020 with obj at 0x0000026539FDAFD8>
+        20:50:44.100542 line       122 		if ret is not None:
+        20:50:44.100542 line       123 			ret = Dispatch(ret, '__call__', None)
+        Modified var:.. ret = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Worksheet instance at 0x2633870851824>
+        20:50:44.103882 line       124 		return ret
+        20:50:44.103882 return     124 		return ret
+        Return value:.. <win32com.gen_py.Microsoft Excel 15.0 Object Library._Worksheet instance at 0x2633870851824>
+    20:50:44.104533 line       106             self._template_data=self._ws.Range('A1:G44').Value
+        Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Worksheet instance at 0x2633870851824>
+        Starting var:.. Cell1 = 'A1:G44'
+        Starting var:.. Cell2 = <PyOleEmpty object at 0x000002652728A820>
+        20:50:44.105530 call       237 	def Range(self, Cell1=defaultNamedNotOptArg, Cell2=defaultNamedOptArg):
+        20:50:44.106566 line       238 		ret = self._oleobj_.InvokeTypes(197, LCID, 2, (9, 0), ((12, 1), (12, 17)),Cell1
+        20:50:44.106844 line       239 			, Cell2)
+        New var:....... ret = <PyIDispatch at 0x000002653A04BF00 with obj at 0x0000026539FDB668>
+        20:50:44.107523 line       240 		if ret is not None:
+        20:50:44.107523 line       241 			ret = Dispatch(ret, 'Range', '{00020846-0000-0000-C000-000000000046}')
+        Modified var:.. ret = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2633751708672>
+        20:50:44.109518 line       242 		return ret
+        20:50:44.109518 return     242 		return ret
+        Return value:.. <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2633751708672>
+        Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2633751708672>
+        Starting var:.. attr = 'Value'
+        20:50:44.110618 call       470 	def __getattr__(self, attr):
+        20:50:44.110618 line       471 		args=self._prop_map_get_.get(attr)
+        New var:....... args = (6, 2, (12, 0), ((12, 17),), 'Value', None)
+        20:50:44.110618 line       472 		if args is None:
+        20:50:44.111512 line       474 		return self._ApplyTypes_(*args)
+        20:50:44.112510 return     474 		return self._ApplyTypes_(*args)
+        Return value:.. (('任务单号：', None, None, None, None, None, None), ...one), (None, None, None, None, None, None, None))
+    20:50:44.113817 line       107             self._excel.CutCopyMode = False
+        Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Application instance at 0x2633869786752>
+        Starting var:.. attr = 'CutCopyMode'
+        Starting var:.. value = False
+        20:50:44.114506 call       476 	def __setattr__(self, attr, value):
+        20:50:44.114506 line       477 		if attr in self.__dict__: self.__dict__[attr] = value; return
+        20:50:44.114506 line       478 		try:
+        20:50:44.114506 line       479 			args, defArgs=self._prop_map_put_[attr]
+        New var:....... args = (330, 0, 4, 0)
+        New var:....... defArgs = ()
+        20:50:44.115503 line       482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+        20:50:44.115894 return     482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+        Return value:.. None
+    20:50:44.116499 return     107             self._excel.CutCopyMode = False
+    Return value:.. None
+20:50:44.116499 return     121         self.get_excel_obj(os.path.join(self._ex_path,file))
+Return value:.. None
+Starting var:.. self = <gernerate_recorder.recoder_process object at 0x000002653EE926D8>
+Starting var:.. data = [['产品名称:1型监控屏', None, None, '序列号:312190316051707...'京东方', '500000310410002', '/', None, None, None]]
+20:50:44.117496 call       136     def write_recordersheet(self,data):
+20:50:44.117496 line       142         try:
+20:50:44.117496 line       144             r=f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}'
+New var:....... r = 'A2:G9'
+20:50:44.117496 line       145             self._ws.Range(r).Value=data
+    Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Worksheet instance at 0x2633870851824>
+    Starting var:.. Cell1 = 'A2:G9'
+    Starting var:.. Cell2 = <PyOleEmpty object at 0x000002652728A820>
+    20:50:44.118494 call       237 	def Range(self, Cell1=defaultNamedNotOptArg, Cell2=defaultNamedOptArg):
+    20:50:44.118494 line       238 		ret = self._oleobj_.InvokeTypes(197, LCID, 2, (9, 0), ((12, 1), (12, 17)),Cell1
+    20:50:44.118494 line       239 			, Cell2)
+    New var:....... ret = <PyIDispatch at 0x000002653A04C5F0 with obj at 0x0000026539FDB0B8>
+    20:50:44.119670 line       240 		if ret is not None:
+    20:50:44.119670 line       241 			ret = Dispatch(ret, 'Range', '{00020846-0000-0000-C000-000000000046}')
+    Modified var:.. ret = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2633751841424>
+    20:50:44.120489 line       242 		return ret
+    20:50:44.120489 return     242 		return ret
+    Return value:.. <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2633751841424>
+    Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2633751841424>
+    Starting var:.. attr = 'Value'
+    Starting var:.. value = [['产品名称:1型监控屏', None, None, '序列号:312190316051707...'京东方', '500000310410002', '/', None, None, None]]
+    20:50:44.120489 call       476 	def __setattr__(self, attr, value):
+    20:50:44.121486 line       477 		if attr in self.__dict__: self.__dict__[attr] = value; return
+    20:50:44.121486 line       478 		try:
+    20:50:44.121486 line       479 			args, defArgs=self._prop_map_put_[attr]
+    New var:....... args = (6, 0, 4, 0)
+    New var:....... defArgs = ()
+    20:50:44.122483 line       482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+    20:50:44.124522 return     482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+    Return value:.. None
+20:50:44.152919 line       146             if self._cur_startrow>=29:
+20:50:44.153403 line       161                 self._cur_startrow+=9
+20:50:44.153403 line       162                 self._cur_endrow +=9
+20:50:44.153403 line       163             print(f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}')
+20:50:44.153403 return     163             print(f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}')
+Return value:.. None
+Starting var:.. self = <gernerate_recorder.recoder_process object at 0x000002653EE926D8>
+Starting var:.. data = [['产品名称:1型监控屏', None, None, '序列号:312190316051707...'京东方', '500000310410002', '/', None, None, None]]
+20:50:44.154398 call       136     def write_recordersheet(self,data):
+20:50:44.154398 line       142         try:
+20:50:44.154398 line       144             r=f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}'
+New var:....... r = 'A11:G18'
+20:50:44.155395 line       145             self._ws.Range(r).Value=data
+    Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Worksheet instance at 0x2633870851824>
+    Starting var:.. Cell1 = 'A11:G18'
+    Starting var:.. Cell2 = <PyOleEmpty object at 0x000002652728A820>
+    20:50:44.155395 call       237 	def Range(self, Cell1=defaultNamedNotOptArg, Cell2=defaultNamedOptArg):
+    20:50:44.155395 line       238 		ret = self._oleobj_.InvokeTypes(197, LCID, 2, (9, 0), ((12, 1), (12, 17)),Cell1
+    20:50:44.156392 line       239 			, Cell2)
+    New var:....... ret = <PyIDispatch at 0x000002653A04C5F0 with obj at 0x0000026539FDB0B8>
+    20:50:44.156714 line       240 		if ret is not None:
+    20:50:44.157390 line       241 			ret = Dispatch(ret, 'Range', '{00020846-0000-0000-C000-000000000046}')
+    Modified var:.. ret = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2633751708672>
+    20:50:44.157390 line       242 		return ret
+    20:50:44.157390 return     242 		return ret
+    Return value:.. <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2633751708672>
+    Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2633751708672>
+    Starting var:.. attr = 'Value'
+    Starting var:.. value = [['产品名称:1型监控屏', None, None, '序列号:312190316051707...'京东方', '500000310410002', '/', None, None, None]]
+    20:50:44.158387 call       476 	def __setattr__(self, attr, value):
+    20:50:44.158387 line       477 		if attr in self.__dict__: self.__dict__[attr] = value; return
+    20:50:44.159384 line       478 		try:
+    20:50:44.159384 line       479 			args, defArgs=self._prop_map_put_[attr]
+    New var:....... args = (6, 0, 4, 0)
+    New var:....... defArgs = ()
+    20:50:44.159384 line       482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+    20:50:44.162428 return     482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+    Return value:.. None
+20:50:44.191332 line       146             if self._cur_startrow>=29:
+20:50:44.191332 line       161                 self._cur_startrow+=9
+20:50:44.191332 line       162                 self._cur_endrow +=9
+20:50:44.192298 line       163             print(f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}')
+20:50:44.192298 return     163             print(f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}')
+Return value:.. None
+Starting var:.. self = <gernerate_recorder.recoder_process object at 0x000002653EE926D8>
+Starting var:.. data = [['产品名称:1型监控屏', None, None, '序列号:312190316051707...'京东方', '500000310410002', '/', None, None, None]]
+20:50:44.192298 call       136     def write_recordersheet(self,data):
+20:50:44.193314 line       142         try:
+20:50:44.193314 line       144             r=f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}'
+New var:....... r = 'A20:G27'
+20:50:44.193314 line       145             self._ws.Range(r).Value=data
+    Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library._Worksheet instance at 0x2633870851824>
+    Starting var:.. Cell1 = 'A20:G27'
+    Starting var:.. Cell2 = <PyOleEmpty object at 0x000002652728A820>
+    20:50:44.194292 call       237 	def Range(self, Cell1=defaultNamedNotOptArg, Cell2=defaultNamedOptArg):
+    20:50:44.194292 line       238 		ret = self._oleobj_.InvokeTypes(197, LCID, 2, (9, 0), ((12, 1), (12, 17)),Cell1
+    20:50:44.194292 line       239 			, Cell2)
+    New var:....... ret = <PyIDispatch at 0x000002653A04C290 with obj at 0x0000026539FDB198>
+    20:50:44.195288 line       240 		if ret is not None:
+    20:50:44.195288 line       241 			ret = Dispatch(ret, 'Range', '{00020846-0000-0000-C000-000000000046}')
+    Modified var:.. ret = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2633751708504>
+    20:50:44.195288 line       242 		return ret
+    20:50:44.195288 return     242 		return ret
+    Return value:.. <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2633751708504>
+    Starting var:.. self = <win32com.gen_py.Microsoft Excel 15.0 Object Library.Range instance at 0x2633751708504>
+    Starting var:.. attr = 'Value'
+    Starting var:.. value = [['产品名称:1型监控屏', None, None, '序列号:312190316051707...'京东方', '500000310410002', '/', None, None, None]]
+    20:50:44.196286 call       476 	def __setattr__(self, attr, value):
+    20:50:44.197285 line       477 		if attr in self.__dict__: self.__dict__[attr] = value; return
+    20:50:44.197285 line       478 		try:
+    20:50:44.197285 line       479 			args, defArgs=self._prop_map_put_[attr]
+    New var:....... args = (6, 0, 4, 0)
+    New var:....... defArgs = ()
+    20:50:44.198281 line       482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+    20:50:44.200613 return     482 		self._oleobj_.Invoke(*(args + (value,) + defArgs))
+    Return value:.. None
+20:50:44.231193 line       146             if self._cur_startrow>=29:
+20:50:44.232238 line       161                 self._cur_startrow+=9
+20:50:44.232238 line       162                 self._cur_endrow +=9
+20:50:44.232238 line       163             print(f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}')
+20:50:44.232238 return     163             print(f'{self._cur_startcolumn}{self._cur_startrow}:{self._cur_endcolumn}{self._cur_endrow}')
+Return value:.. None
